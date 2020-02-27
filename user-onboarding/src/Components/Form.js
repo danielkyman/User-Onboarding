@@ -1,11 +1,11 @@
-import React, {useState, useEffect}from "react";
-import {withFormik, Form, Field} from "formik";
+import React, { useState, useEffect } from "react";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
 
 
-const UserForm = ({values, touched, errors, status}) => {
+const UserForm = ({ values, touched, errors, status }) => {
 
     const [users, setUsers] = useState([]);
 
@@ -14,12 +14,13 @@ const UserForm = ({values, touched, errors, status}) => {
         status && setUsers(users => [...users, status])
     }, [status]);
 
-    return(
+    return (
         <div>
-            <Form>
+            <Form className="form">
                 <label htmlFor="username">
-                    Username: 
+                    Username:
                     <Field
+                        className="username"
                         id="username"
                         type="text"
                         name="username"
@@ -29,8 +30,9 @@ const UserForm = ({values, touched, errors, status}) => {
                 </label>
                 <br />
                 <label htmlFor="password">
-                    Password: 
+                    Password:
                     <Field
+                        className="password"
                         id="password"
                         type="text"
                         name="password"
@@ -40,8 +42,9 @@ const UserForm = ({values, touched, errors, status}) => {
                 </label>
                 <br />
                 <label htmlFor="email">
-                    Email: 
+                    Email:
                     <Field
+                        className="email"
                         id="email"
                         type="text"
                         name="email"
@@ -52,6 +55,7 @@ const UserForm = ({values, touched, errors, status}) => {
                 <label htmlFor="terms">
                     Terms of Service:
                     <Field
+                        className="terms"
                         id="terms"
                         type="checkbox"
                         name="terms"
@@ -62,6 +66,7 @@ const UserForm = ({values, touched, errors, status}) => {
                 <label htmlFor="comments">
                     Comments:
                     <Field
+                        className="comments"
                         id="comments"
                         as="textarea"
                         type="text"
@@ -89,7 +94,7 @@ const UserForm = ({values, touched, errors, status}) => {
 };
 
 const FormikUserForm = withFormik({
-    mapPropsToValues({username, password, email, terms, comments}){
+    mapPropsToValues({ username, password, email, terms, comments }) {
         return {
             username: username || "",
             password: password || "",
@@ -102,14 +107,14 @@ const FormikUserForm = withFormik({
         username: Yup.string().required(),
         password: Yup.string().required()
     }),
-    handleSubmit(values, {setStatus, resetForm}) {
+    handleSubmit(values, { setStatus, resetForm }) {
         console.log("Submitting", values);
         axios.post("https://reqres.in/api/users", values)
-        .then(response => {
-            console.log("Success", response)
-            setStatus(response.data);
-            resetForm();
-        })
+            .then(response => {
+                console.log("Success", response)
+                setStatus(response.data);
+                resetForm();
+            })
 
     }
 })(UserForm);

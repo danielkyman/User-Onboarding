@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
+
+
 html{
-  background-color: papayawhip;
+  background-color: ghostwhite;
+  font-size: 62.5%;
+  font-family: 'Odibee Sans';
 }
 
 .App {
@@ -39,4 +44,55 @@ html{
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+  font-size: 3rem;
+}
+
+.username{
+  height:25px;
+}
+
+.password{
+  height:25px;
+}
+
+.email{
+  height:25px;
+}
+
+.form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Odibee Sans';
+}
+
+input,
+textarea {
+  margin-top: 32px;
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  color: #4d2d52;
+  border: 2px solid rgba(77, 45, 82, 0.8);
+}
+
+input:focus {
+  border-color: #007eff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 0 3px rgba(0, 126, 255, 0.1);
+  outline: none;
+}
+
+input.errors {
+  border-color: red;
+  color:red;
+}
+
+h1{
+  font-size: 9rem;
+  font-family: 'Odibee Sans';
 }
